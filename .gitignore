@@ -1,0 +1,9 @@
+node_modules/ 
+.next/ 
+venv/ 
+sql_runner.db 
+*.log 
+.env 
+dist/ 
+build/ 
+__pycache__/ 

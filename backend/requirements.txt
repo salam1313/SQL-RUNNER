@@ -1,0 +1,6 @@
+# Backend requirements
+fastapi
+uvicorn
+python-multipart
+passlib[bcrypt]
+python-jose

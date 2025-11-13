@@ -18,7 +18,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+// ...existing code...
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
 import Collapse from '@mui/material/Collapse';
@@ -632,7 +632,7 @@ export default function Home() {
             </Box>
             {/* Move Recent Queries dropdown lower */}
             <Box sx={{ mt: 4 }}>
-              <Button fullWidth variant="outlined" onClick={() => setShowRecent((v) => !v)} endIcon={showRecent ? <ExpandLessIcon /> : <ExpandMoreIcon />}>Recent Queries</Button>
+              <Button fullWidth variant="outlined" onClick={() => setShowRecent((v) => !v)} endIcon={<ExpandMoreIcon />}>Recent Queries</Button>
               <Collapse in={showRecent} sx={{ flex: 1, overflow: 'auto', mt: 2 }}>
                 {recentQueries.length > 0 ? (
                   <Paper elevation={0} sx={{ p: 1 }}>

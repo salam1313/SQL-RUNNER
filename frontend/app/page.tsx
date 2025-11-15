@@ -132,7 +132,7 @@ export default function Home() {
       .then(r => r.json())
       .then(setTables);
   }
-  function fetchTableInfo(name) {
+  function fetchTableInfo(name: string) {
     setSelectedTable(name);
     setShowTableModal(true);
     setLoading(true);

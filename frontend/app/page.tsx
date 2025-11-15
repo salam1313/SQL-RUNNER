@@ -7,7 +7,7 @@ import { Box, Paper, Typography, Button, TextField, Drawer, List, ListItem, List
 
 const ClientOnlyEditor = dynamic(() => import("./components/ClientOnlyEditor"), { ssr: false });
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://your-railway-url.railway.app";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
 export default function Home() {
   // Pagination
@@ -22,17 +22,17 @@ export default function Home() {
   const [loginLoading, setLoginLoading] = useState(false);
   const [error, setError] = useState("");
   // App state
-  const [tables, setTables] = useState([]);
+  const [tables, setTables] = useState<string[]>([]);
   const [selectedTable, setSelectedTable] = useState("");
-  const [tableInfo, setTableInfo] = useState(null);
+  const [tableInfo, setTableInfo] = useState<any>(null);
   const [showTableModal, setShowTableModal] = useState(false);
   const [query, setQuery] = useState("");
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState<any>(null);
   const [loading, setLoading] = useState(false);
-  const [recentQueries, setRecentQueries] = useState([]);
+  const [recentQueries, setRecentQueries] = useState<any[]>([]);
   const [showRecent, setShowRecent] = useState(false);
   // Profile
-  const [userProfile, setUserProfile] = useState(null);
+  const [userProfile, setUserProfile] = useState<any>(null);
   const [showProfile, setShowProfile] = useState(false);
 
   // Fetch tables on login
@@ -161,6 +161,7 @@ export default function Home() {
   }
 
   // Query runner
+  // @ts-ignore
   function handleRunQuery(e, customQuery) {
     if (e) e.preventDefault();
     

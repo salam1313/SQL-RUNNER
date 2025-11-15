@@ -3,12 +3,9 @@
 import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Box, Paper, Typography, Button, TextField, Drawer, List, ListItem, ListItemButton, ListItemText, Dialog, DialogTitle, DialogContent, DialogActions, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Collapse, Skeleton, IconButton } from "@mui/material";
-import Prism from "prismjs";
-import "prismjs/components/prism-sql";
-import "prismjs/themes/prism.css";
 import ReplayIcon from '@mui/icons-material/Replay';
 
-const Editor = dynamic(() => import("react-simple-code-editor"), { ssr: false });
+const ClientOnlyEditor = dynamic(() => import("./components/ClientOnlyEditor"), { ssr: false });
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
@@ -260,24 +257,9 @@ export default function Home() {
         </Box>
         <Paper elevation={3} sx={{ width: "100%", maxWidth: 700, p: 3, borderRadius: 3, mb: 3 }}>
           <form onSubmit={e => handleRunQuery(e)} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            {/* SQL Editor with syntax highlighting */}
+            {/* SQL Editor with syntax highlighting (client-only) */}
             <Box sx={{ mb: 2, border: '1px solid #e0e0e0', borderRadius: 2, overflow: 'hidden', bgcolor: '#fafbfc' }}>
-              <Editor
-                value={query}
-                onValueChange={setQuery}
-                highlight={code => Prism.highlight(code, Prism.languages.sql, 'sql')}
-                padding={12}
-                style={{
-                  fontFamily: 'Fira Mono, monospace',
-                  fontSize: 15,
-                  minHeight: 90,
-                  outline: 'none',
-                  background: 'inherit',
-                  color: '#222',
-                }}
-                textareaId="sql-editor"
-                placeholder="Type your SQL query here..."
-              />
+              <ClientOnlyEditor value={query} onChange={setQuery} />
             </Box>
             <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
               <Button variant="contained" color="primary" type="submit" disabled={loading} sx={{ fontWeight: 700, px: 4, py: 1.5 }}>{loading ? "Running..." : "Run Query"}</Button>
